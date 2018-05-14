@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset = utf-8"/>
+        <title>Shopping List </title>
+        <script type="text/javascript" src="../js/show.js"> </script>
+        <link rel="stylesheet" href="../css/layout.css" type="text/css"/>
+    </head>
+    <body>
+        <h1>What to buy</h1>
+        <p title = "a gentle reminder"> don't forget tot buy this stuff</p>
+        <ul id="purchase">
+            <li> A tin of beans</li>
+            <li>Cheese</li>
+            <li>Milk</li>
+        </ul>
+        <br></br>
+        <h1>Snapshots</h1>
+        <ul>
+            <li>
+                <a href="../images/firework.jpg" title = "A firework display" onClick = "showPic(this); return false;">firework</a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="../images/lotus.jpg" title = "A lotus display" onClick = "showPic(this); return false;">lotus</a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="../images/rose.jpg" title = "A rose display" onClick = "showPic(this); return false;">rose</a>
+            </li>
+        </ul>
+        <div>
+            <img id="placeholder" src="" alt="my image gallery"></img> 
+        </div>
+        
+        <h2 id="showTitle">choose an image</h2>
+        <!--h2 里面的文本节点不同于 h2 节点, 它是另外一个节点,是利用document.getElementById("showTitle").childNodes 的第一个节点-->
+
+
+    </body>
+</html>

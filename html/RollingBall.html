@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src = "../js/rotate.js"></script>
+  <script type="text/javascript" src="../js/a.js">
+  
+$(document).ready(function(){
+  $("article>.entry").find("a").each(function(){
+      $(this).attr("target","_blank")
+  })
+  var tags=$("#hidetags").val();
+  var slugs=$("#hideslug").val();
+  var tagsArray=new Array();
+  tagsArray=tags.split(",");
+  var html="<li style='color:#999;'>亲，未找到相关文章哦！</li>";
+  for(var i=0;i<tagsArray.length;i++){
+       var datatag=tagsArray[i];
+       $.ajax({
+           url:"/tag/"+datatag,
+           type:"post",
+           datatype:"json",
+          // data:{tag:datatag},
+           success:function(result){
+               for(var j=0;j<result.posts.length;j++){
+                   if(result.posts[j].slug !=slugs){
+                       if(html=="<li style='color:#999;'>亲，未找到相关文章哦！</li>"){
+                           html="";
+                       }
+                       if(j<6){
+                          html +='<li><a href="/post/'+result.posts[j].slug +'" title="'+result.posts[j].title +'">'+result.posts[j].title +'</a></li>';
+                       }
+                   }
+               }
+             $("#relativearticles").html(html);
+           }
+       })
+  }
+})
+
+// $(window).load(function() {
+//     $("#addnofollow").find("a").attr("rel","nofollow");
+// })
+  </script>
+
+  <link rel="stylesheet" href = "../css/animation.css">
+</head>
+
+<body>
+  <span>body</span>
+  <div class="block a-fadeinR">
+    <div class="widget about">
+      <strong class="wt">yun shoucang </strong>
+      <div class="wc">
+        <div id="rotate">
+          <a href="/tag/angularjs" target="_blank" style="left: 122.996px; top: 259.423px; font-size: 14px; opacity: 0.531369; z-index: 1;">angularjs</a>
+          <a href="/tag/fea" target="_blank" style="left: 77.8169px; top: 245.554px; font-size: 14px; opacity: 0.513635; z-index: 22;">fea</a>
+          <a href="/tag/iframe" target="_blank" style="left: 67.6345px; top: 214.198px; font-size: 13px; opacity: 0.255256; z-index: 2;">iframe</a>
+          <a href="/tag/dedecms" target="_blank" style="left: 147.829px; top: 207.306px; font-size: 13px; opacity: 0.21159; z-index: 3;">dedecms</a>
+          <a href="/tag/Emmet" target="_blank" style="left: 200.792px; top: 223.876px; font-size: 14px; opacity: 0.393566; z-index: 4;">Emmet</a>
+          <a href="/tag/hear" target="_blank" style="left: 196.328px; top: 243.467px; font-size: 15px; opacity: 0.763299; z-index: 5;">hear</a>
+          <a href="/tag/flash" target="_blank" style="left: 131.568px; top: 248.28px; font-size: 16px; opacity: 1.10373; z-index: 6;">flash</a>
+          <a href="/tag/canvas" target="_blank" style="left: 61.1245px; top: 232.527px; font-size: 16px; opacity: 1.04048; z-index: 7;">canvas</a>
+          <a href="/tag/photoshop" target="_blank" style="left: 13.9596px; top: 201.931px; font-size: 15px; opacity: 0.675929; z-index: 8;">photoshop</a>
+          <a href="/tag/jsmart" target="_blank" style="left: -20.6427px; top: 168.311px; font-size: 13px; opacity: 0.351488; z-index: 9;">jsmart</a>
+          <a href="/tag/css hack" target="_blank" style="left: 59.9305px; top: 143.383px; font-size: 13px; opacity: 0.168896; z-index: 10;">css hack</a>
+          <a href="/tag/sublime " target="_blank" style="left: 135.937px; top: 134.243px; font-size: 13px; opacity: 0.115351; z-index: 11;">sublime </a>
+          <a href="/tag/IE" target="_blank" style="left: 195.084px; top: 141.52px; font-size: 13px; opacity: 0.179264; z-index: 12;">IE</a>
+          <a href="/tag/javascript" target="_blank" style="left: 259.082px; top: 160.042px; font-size: 13px; opacity: 0.37522; z-index: 13;">javascript</a>
+          <a href="/tag/input%20file" target="_blank" style="left: 262.462px; top: 181.22px; font-size: 15px; opacity: 0.740592; z-index: 14;">input file</a>
+          <a href="/tag/html5" target="_blank" style="left: 209.335px; top: 196.101px; font-size: 17px; opacity: 1.28097; z-index: 15;">html5</a>
+          <a href="/tag/Ecshop" target="_blank" style="left: 150.369px; top: 198.126px; font-size: 19px; opacity: 1.78026; z-index: 16;">Ecshop</a>
+          <a href="/tag/Cookie" target="_blank" style="left: 52.0265px; top: 184.889px; font-size: 18px; opacity: 1.77655; z-index: 17;">Cookie</a>
+          <a href="/tag/nginx" target="_blank" style="left: 9.30431px; top: 158.57px; font-size: 17px; opacity: 1.28538; z-index: 18;">nginx</a>
+          <a href="/tag/nodejs" target="_blank" style="left: -17.0358px; top: 125.079px; font-size: 15px; opacity: 0.762496; z-index: 19;">nodejs</a>
+          <a href="/tag/sass" target="_blank" style="left: -23.5242px; top: 92.2536px; font-size: 14px; opacity: 0.407215; z-index: 20;">sass</a>
+          <a href="/tag/input" target="_blank" style="left: 35.827px; top: 67.6241px; font-size: 13px; opacity: 0.211969; z-index: 21;">input</a>
+          <a href="/tag/hello" target="_blank" style="left: 117.096px; top: 56.3467px; font-size: 13px; opacity: 0.140129; z-index: 0;">yuicompressor</a>
+          <a href="/tag/yuicompressor" target="_blank" style="left: 163.393px; top: 59.807px; font-size: 13px; opacity: 0.175712; z-index: 23;">yuicompressor</a>
+          <a href="/tag/%20UEditor" target="_blank" style="left: 247.13px; top: 75.2369px; font-size: 13px; opacity: 0.330623; z-index: 24;">UEditor</a>
+          <a href="/tag/php" target="_blank" style="left: 275.153px; top: 96.4424px; font-size: 14px; opacity: 0.648155; z-index: 25;">php</a>
+          <a href="/tag/js" target="_blank" style="left: 250.666px; top: 115.477px; font-size: 16px; opacity: 1.19084; z-index: 26;">js</a>
+          <a href="/tag/go" target="_blank" style="left: 197.128px; top: 124.855px; font-size: 19px; opacity: 1.91219; z-index: 27;">go</a>
+          <a href="/tag/execCommand" target="_blank" style="left: 132.325px; top: 119.76px; font-size: 20px; opacity: 2.32887; z-index: 28;">execCommand</a>
+          <a href="/tag/jquery" target="_blank" style="left: 43.1145px; top: 99.6246px; font-size: 19px; opacity: 1.94036; z-index: 29;">jquery</a>
+          <a href="/tag/jqueryeasyUI" target="_blank" style="left: -0.801298px; top: 68.5968px; font-size: 17px; opacity: 1.22443; z-index: 30;">jqueryeasyUI</a>
+          <a href="/tag/hajit" target="_blank" style="left: -5.42883px; top: 34.594px; font-size: 15px; opacity: 0.687978; z-index: 31;">har</a>
+          <a href="/tag/ant" target="_blank" style="left: 30.8125px; top: 7.0272px; font-size: 14px; opacity: 0.391275; z-index: 32;">ant</a>
+          <a href="/tag/html" target="_blank" style="left: 102.474px; top: -6.32974px; font-size: 13px; opacity: 0.280398; z-index: 33;">html</a>
+          <a href="/tag/lunch" target="_blank" style="left: 183.732px; top: -2.4505px; font-size: 13px; opacity: 0.329853; z-index: 34;">jd</a>
+          <a href="/tag/css3" target="_blank" style="left: 236.745px; top: 14.9893px; font-size: 14px; opacity: 0.565287; z-index: 35;">css3</a>
+          <a href="/tag/linux" target="_blank" style="left: 245.203px; top: 35.9459px; font-size: 16px; opacity: 1.0549; z-index: 36;">linux</a>
+          <a href="/tag/navigator" target="_blank" style="left: 194.239px; top: 47.3445px; font-size: 18px; opacity: 1.73924; z-index: 37;">navigator</a>
+          <a href="/tag/jar" target="_blank" style="left: 112.598px; top: 39.1723px; font-size: 19px; opacity: 1.95438; z-index: 38;">sxsd</a>
+          <a href="/tag/json" target="_blank" style="left: 60.425px; top: 11.4948px; font-size: 17px; opacity: 1.35111; z-index: 39;">json</a>
+          <a href="/tag/mall" target="_blank" style="left: 44.766px; top: -21.546px; font-size: 15px; opacity: 0.764844; z-index: 40;">hear</a>
+          <a href="/tag/RegExp" target="_blank" style="left: 116.817px; top: -36.8249px; font-size: 14px; opacity: 0.568769; z-index: 41;">RegExp</a>
+          <a href="/tag/seo" target="_blank" style="left: 193.295px; top: -22.9006px; font-size: 15px; opacity: 0.831169; z-index: 42;">seo</a>
+          <a href="/tag/mongodb" target="_blank" style="left: 137.967px; top: -14.1087px; font-size: 17px; opacity: 1.27283; z-index: 43;">mongodb</a>
+        </div>
+        <div class="sep10"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
