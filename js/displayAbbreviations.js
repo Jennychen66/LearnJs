@@ -58,7 +58,57 @@ function quickAccessList(){
     document.body.appendChild(p3Ele);
     document.body.appendChild(pelement);
 }
+
+//3. movement 
+
+function move(){
+    var Ele = document.getElementById("movement");
+    /*var xpos = parseInt(Ele.offsetWidth);
+    var ypos = parseInt(Ele.offsetHeight);
+    if(xpos == 200 )return true;
+    xpos+=5;
+    ypos+=5;
+    Ele.offsetWidth = xpos ; // 是无效的, 原因: offsetWidth 是DOM属性不是HTML属性, javascript不能够给ＤＯＭ属性赋值.
+    Ele.offsetHeight = ypos ;// 是无效的, 原因: offsetWidth 是DOM属性不是HTML属性, javascript不能够给ＤＯＭ属性赋值.
+    setTimeout("move()",500);*/
+
+    //设置成宽高变
+    /*
+    var xpos = parseInt(Ele.style.width);
+    var ypos = parseInt(Ele.style.height);
+    if(xpos == 200 && ypos == 200) return true;
+    xpos+=5;
+    ypos+=5;
+    Ele.style.width = xpos + "px";
+    Ele.style.height = ypos+ "px";
+    */ 
+
+    // 设置成从左到右移动
+    var lpos = parseInt(Ele.style["margin-left"]);
+    if(lpos == 400 ) return true;
+    lpos+=5;
+    Ele.style["margin-left"] = lpos + "px";
+    setTimeout("move()",50);  
+}
+
+//4. 抽象之后的movement 函数
+
+function abstractMove(moveElementID, final_x,final_y,interval){
+    var Ele = document.getElementById(moveElementID);
+    var xpos = parseInt(Ele.style.width);
+    var ypos = parseInt(Ele.style.height);
+    if(xpos == final_x && ypos == final_y ) return true;
+    xpos+=5;
+    ypos+=5;
+    Ele.style.width = xpos + "px";
+    Ele.style.height = ypos+ "px";
+    var repeat = `abstractMove("${moveElementID}", ${final_x},${final_y},${interval})`; //ES6 真的很好用
+    setTimeout(repeat,interval);
+ }
+
 window.onload =function(){
     displayAbbreviations();
     quickAccessList();
+    //move(); // 把move()函数换成abstractMove()函数
+    abstractMove("movement2",200,200,10);
 }
