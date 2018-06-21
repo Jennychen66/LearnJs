@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>nihao </title>
+    <style>
+        canvas {
+            width: 100%;
+            height: 100%
+        }
+    </style>
+
+    <!--但是实际运行时有问题，报错： Refused to execute script from 'https://raw.github.com/mrdoob/three.js/master/build/three.js'because its MIME type ('text/plain') is not executable, and strict MIME type checking is enabled.
+网上对该问题的解答 ：Chrome refused to execute this JavaScript file https://webmasters.stackexchange.com/questions/50006/chrome-refused-to-execute-this-javascript-file ，真的是说了很多东西，不过都不太懂，以后可以再回头看一看。其中有一个解决这个问题的简单方法，去掉源码中<script>的src中的网址的第一个小数点，即：
+
+https://raw.github.com/mrdoob/three.js/master/build/three.js 
+change to
+
+https://rawgithub.com/mrdoob/three.js/master/build/three.js，验证OK。-->
+</head>
+
+<body>
+    <script type="text/javascript" src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
+    <script>
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight,0.1,1000);
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        var geometry = new THREE.CubeGeometry(1, 1, 1);
+        var material = new THREE.MeshBasicMaterial({
+            color: 0x00ffff
+        });
+        var cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+        camera.position.z = 15;
+
+        function render() {
+            requestAnimationFrame(render);
+            cube.rotation.x += 0.1;
+            cube.rotation.y += 0.1;
+            renderer.render(scene, camera);
+        }
+        render();
+    </script>
+</body>
+
+</html>

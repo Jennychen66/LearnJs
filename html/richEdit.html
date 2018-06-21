@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Black Page for Rich Text Editing</title>
+</head>
+
+<body>
+    <iframe name="richedit" style="height:100px;width:100px" src="tensorTest.html">ffere</iframe>
+    <div id="richEdit" class="editable" contenteditable="true">你好 </div>
+    <div id="JennyTest" class="editable">JennyTest </div>
+    <!--we can still edit this area when no content inside this div element-->
+
+    <button type="button" onclick="doInsert( 'I\'m inserted');">Insert</button>
+
+    <script type="text/javascript">
+        //another way to set the content to be editable 
+        // this code should set before the EventUtil , otherwise it will not be excuted because there is an error in EventUtil
+        var div = document.getElementById("JennyTest");
+        div.contentEditable = "true";
+        document.execCommand("createlink", false, "http://www.worx.com");
+        document.execCommand("fontSize", false, "7");
+        // there are 3 values for "contenteditable" : "true","false","inherit"
+
+
+        /* EventUtil.addHandler(window,"load",function(){      // Uncaught ReferenceError: EventUtil is not defined
+             frames["richEdit"].document.designMode = "on";
+         })*/
+
+        window.onload = function () {
+            // frames["richedit"].document.designMode = "on";
+
+
+            frames["richedit"].document.execCommand("bold", false, null);
+            frames["richedit"].document.execCommand("createlink", false, "http:www.baidu.com");
+
+        }
+
+        function doInsert(text) {
+            var selection = frames["richedit"].getSelection();
+            var selectedText = selection.toString();
+            if (selection && selection.rangeCount > 0) {
+                var range = selection.getRangeAt(0);
+                var span = frames["richedit"].document.createElement("span");
+                span.style.backgroundColor = "yellow";
+                range.surroundContents(span);
+            }
+            //the fix for the issue : Uncaught DOMException: Failed to execute 'getRangeAt' on 'Selection': 1 is not a valid index
+            //We can't add the code which inside doInsert()function into window.onload, 
+            //because there is no chance for the browser to select any string inside the editable richContext
+            //http://jsfiddle.net/stXDu/
+            //https://stackoverflow.com/questions/22935320/uncaught-indexsizeerror-failed-to-execute-getrangeat-on-selection-0-is-not
+
+
+
+        }
+    </script>
+</body>
+
+</html>
