@@ -1,0 +1,141 @@
+<style>
+  body {
+  padding-top: 80px;
+  text-align: center;
+  font-family: monaco, monospace;
+ 
+  background-size: cover;
+}
+h1, h2 {
+  display: inline-block;
+  background: #fff;
+}
+h1 {
+  font-size: 30px
+}
+h2 {
+  font-size: 20px;
+}
+span {
+  background: #fd0;
+}
+.triangle-up {
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 100px solid red;
+  
+  }
+  #triangle-up {
+      width: 0;
+      height: 0;
+      border-top: 50px solid transparent;
+      border-bottom:50px solid transparent;
+      border-right:100px solid red;
+     
+  
+  }
+  #star-six{
+  width:0;
+  height:0;
+  border-left:50px solid transparent;
+  border-right:50px solid transparent;
+  border-bottom : 100px solid blue;
+  position:relative;
+  }
+  
+  #star-six:after{
+    width:0;
+    height:0;
+    border-left:50px solid transparent;
+    border-right:50px solid transparent;
+    border-top: 100px solid blue;
+    content:"";
+    left:-50px;
+    top:30px;
+    position:absolute;
+  }
+  #star-five{
+    height:0;
+    width:0;
+    border-left:100px solid transparent;
+    border-right:100px solid transparent;
+    border-bottom:70px solid red;
+    transform:rotate(35deg);
+    margin:50px 0;
+    position:relative;
+    color:red;
+    display:block;
+    
+  }
+  #star-five:before{
+    border-left:30px solid transparent;
+    border-right:30px solid transparent;
+    border-bottom : 80px solid red;
+    height:0;
+    width:0;
+    content: '';
+    transform:rotate(-35deg);
+    display:block;
+    top:-45px;
+    left:-65px;
+    position:absolute;
+
+    
+    }
+  #star-five:after{
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid red;
+    content:'';
+    transform:rotate(-70deg);
+    width:0;
+    height:0;
+    position:absolute;
+    top:3px;
+    left:-105px;
+    display:block;
+    
+    }
+  #heart{
+    width:100px;
+    height:90px;
+    position: relative;
+    background-color:green;
+    }
+  #heart:before,
+  #heart:after{
+    width:50px;
+    height:80px;
+    background : red;
+    content:"";
+    position:absolute;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin:0 100%;
+    top:0;
+    left:50px;
+    }
+  #heart:after{
+    left:0;
+    transform:rotate(45deg);
+    transform-origin:100% 100%;
+    
+    }
+  
+
+</style>
+<h1>Welcome to <span>scratchpad.io</span></h1><br>
+<h2>This is a demo of css shape refer to https://css-tricks.com/the-shapes-of-css/ </h2>
+<h2>(a realtime html + css editor)</h2>
+<div class="triangle-up"> </div>
+<br>
+<div id="triangle-up"> </div>
+<div id="star-six"></div>
+
+<div id= "star-five"></div>
+
+<div id= "heart"></div>
+<a href="https://css-tricks.com/almanac/properties/t/transform-origin/"> see transform origin </a>
+
